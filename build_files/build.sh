@@ -2,6 +2,11 @@
 
 set -ouex pipefail
 
+# rsync system files into the container image
+rsync -a /ctx/system_files/etc/ /etc/
+rsync -a /ctx/system_files/usr/ /usr/
+
+
 ### Install packages
 
 # Packages can be installed from any enabled yum repo on the image.
@@ -9,8 +14,16 @@ set -ouex pipefail
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
-# this installs a package from fedora repos
+# COPR Repos
+dnf5 -y copr enable jdxcode/mise
+
 dnf5 install -y tmux 
+dnf5 install -y code
+dnf5 -y install mise
+
+# 1Password
+rpm --import https://downloads.1password.com/linux/keys/1password.asc
+dnf install 1password
 
 # Use a COPR Example:
 #
@@ -18,16 +31,6 @@ dnf5 install -y tmux
 # dnf5 -y install package
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
-
-# Mise for programming toolchains
-dnf5 -y copr enable jdxcode/mise
-dnf5 -y install mise
-dnf5 -y copr disable jdxcode/mise
-
-# 1Password
-# rpm --import https://downloads.1password.com/linux/keys/1password.asc
-# sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
-# dnf install 1password
 
 #### Example for enabling a System Unit File
 
