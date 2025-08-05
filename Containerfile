@@ -26,10 +26,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     /ctx/build.sh && \
     ostree container commit
 
-# Mise for programming toolchains
-sudo dnf copr enable jdxcode/mise
-sudo dnf install mise
-    
+
 ### LINTING
 ## Verify final image and contents are correct.
 RUN bootc container lint
