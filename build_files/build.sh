@@ -6,7 +6,7 @@ dnf5 -y install rsync
 dnf5 -y install 'dnf5-command(copr)'
 
 # rsync system files into the container image
-rsync -rvK /ctx/system_files /
+rsync -rvK --ignore-existing /ctx/system_files /
 # rsync -a /ctx/system_files/usr/ /usr/
 
 
