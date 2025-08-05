@@ -2,6 +2,8 @@
 
 set -ouex pipefail
 
+dnf5 -y rsync
+
 # rsync system files into the container image
 rsync -a /ctx/system_files/etc/ /etc/
 rsync -a /ctx/system_files/usr/ /usr/
