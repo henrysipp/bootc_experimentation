@@ -20,8 +20,8 @@ dnf5 install -y tmux
 # dnf5 -y copr disable ublue-os/staging
 
 # Mise for programming toolchains
-sudo dnf copr enable jdxcode/mise
-sudo dnf install mise
+dnf copr enable jdxcode/mise
+dnf install mise
     
 # 1Password
 # rpm --import https://downloads.1password.com/linux/keys/1password.asc
