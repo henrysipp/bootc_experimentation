@@ -33,7 +33,7 @@ dnf5 -y install mise
 
 # 1Password
 rpm --import https://downloads.1password.com/linux/keys/1password.asc
-dnf5 install -y 1password
+# dnf5 install -y 1password
 
 # Use a COPR Example:
 #
