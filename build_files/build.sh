@@ -2,11 +2,12 @@
 
 set -ouex pipefail
 
-dnf5 -y rsync
+dnf5 -y install rsync
+dnf5 -y install 'dnf5-command(copr)'
 
 # rsync system files into the container image
 rsync -a /ctx/system_files/etc/ /etc/
-rsync -a /ctx/system_files/usr/ /usr/
+# rsync -a /ctx/system_files/usr/ /usr/
 
 
 ### Install packages
@@ -19,13 +20,13 @@ rsync -a /ctx/system_files/usr/ /usr/
 # COPR Repos
 dnf5 -y copr enable jdxcode/mise
 
-dnf5 install -y tmux 
-dnf5 install -y code
+dnf5 -y install tmux 
+dnf5 -y install code
 dnf5 -y install mise
 
 # 1Password
 rpm --import https://downloads.1password.com/linux/keys/1password.asc
-dnf install 1password
+# dnf5 install -y 1password
 
 # Use a COPR Example:
 #
