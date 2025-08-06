@@ -18,7 +18,8 @@ rsync -rvK /ctx/system_files/ /
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
-dnf5 -y install @GNOME gnome-tweaks 
+dnf5 -y install @workstation-product-environment
+dnf5 -y install gnome-tweaks 
 
 # COPR Repos
 dnf5 -y copr enable jdxcode/mise
