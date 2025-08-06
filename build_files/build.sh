@@ -20,20 +20,18 @@ rsync -rvK /ctx/system_files/ /
 
 # COPR Repos
 dnf5 -y copr enable jdxcode/mise
+dnf5 -y config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
 
 dnf5 -y install git
-dnf5 -y config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
 dnf5 -y install gh --repo gh-cli
-
 dnf5 -y install tmux 
-dnf5 -y install tmux 
-
+dnf5 -y install gnome-tweaks 
 dnf5 -y install code
 dnf5 -y install mise
 
-# 1Password
+# 1Password - create /opt first since it doesn't exist
+mkdir -p /var/opt/1Password
 rpm --import https://downloads.1password.com/linux/keys/1password.asc
-mkdir -p /opt/1Password
 dnf5 install -y 1password
 
 # Use a COPR Example:
@@ -42,6 +40,8 @@ dnf5 install -y 1password
 # dnf5 -y install package
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
+
+dnf5 -y copr disable jdxcode/mise
 
 #### Example for enabling a System Unit File
 
