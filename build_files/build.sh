@@ -18,6 +18,8 @@ rsync -rvK /ctx/system_files/ /
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
+dnf5 -y install @GNOME gnome-tweaks 
+
 # COPR Repos
 dnf5 -y copr enable jdxcode/mise
 dnf5 -y config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
@@ -25,9 +27,7 @@ dnf5 -y config-manager addrepo --from-repofile=https://cli.github.com/packages/r
 dnf5 -y install git
 dnf5 -y install gh --repo gh-cli
 dnf5 -y install tmux 
-dnf5 -y install gnome-tweaks 
-dnf5 -y install code
-dnf5 -y install mise
+dnf5 -y install mise code
 
 # 1Password - create /opt first since it doesn't exist
 mkdir -p /var/opt/1Password
