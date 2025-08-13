@@ -2,6 +2,9 @@
 
 set -ouex pipefail
 
+
+mkdir -p /var/opt /var/roothome
+
 dnf5 -y install rsync
 dnf5 -y install 'dnf5-command(copr)'
 dnf5 -y install dnf5-plugins
@@ -21,28 +24,23 @@ rsync -rvK /ctx/system_files/ /
 dnf5 -y install gnome-tweaks 
 
 # COPR Repos
-dnf5 -y copr enable jdxcode/mise
 dnf5 -y config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
 
 dnf5 -y install git
 dnf5 -y install gh --repo gh-cli
 dnf5 -y install tmux 
-dnf5 -y install mise code
+dnf5 -y install code
 
-# 1Password - create /opt first since it doesn't exist
-mkdir -p /var/opt/1Password
-rpm --import https://downloads.1password.com/linux/keys/1password.asc
-dnf5 install -y 1password
-
-# Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
-# Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
-
+dnf5 -y copr enable jdxcode/mise
+dnf5 -y install mise
 dnf5 -y copr disable jdxcode/mise
 
+rpm --import https://downloads.1password.com/linux/keys/1password.asc
+dnf5 install -y 1password 1password-cli
+
 #### Example for enabling a System Unit File
+
+# Install 1Password
+bash /ctx/build_files/1password.sh
 
 systemctl enable podman.socket
