@@ -1,12 +1,13 @@
 #!/bin/bash
 
-
 dnf5 -y install gnome-tweaks 
-dnf install -y gnome-extensions-app 
-dnf install -y gnome-shell-extension-appindicator \
+dnf5 -y install gnome-extensions-app 
+dnf5 -y install gnome-shell-extension-appindicator \
     gnome-shell-extension-blur-my-shell \
     gnome-shell-extension-dash-to-dock \
     gnome-shell-extension-hotedge \
+    gnome-shell-extension-just-perfection \
+    gnome-shell-extension-burn-my-windows
 
 # Compile schemas to ensure they're valid after GNOME shell setup
 echo "Compiling schemas after GNOME shell setup..."
