@@ -11,7 +11,7 @@ dnf5 -y install dnf5-plugins
 
 # rsync system files into the container image
 rsync -rvK /ctx/system_files/ /
-
+dconf update
 
 # COPR Repos
 dnf5 -y config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
@@ -28,8 +28,8 @@ dnf5 -y copr disable jdxcode/mise
 rpm --import https://downloads.1password.com/linux/keys/1password.asc
 dnf5 install -y 1password 1password-cli
 
-bash /ctx/build_files/1password.sh
 bash /ctx/build_files/gnome_shell.sh
+bash /ctx/build_files/1password.sh
 
 # Services
 systemctl enable podman.socket
