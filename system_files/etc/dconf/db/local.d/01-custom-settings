@@ -1,8 +1,8 @@
 [org/gnome/desktop/interface]
-enable-hot-corners=false
+enable-hot-corners=
 
 [org/gnome/desktop/wm/preferences]
 button-layout='close,minimize,maximize:'
 
 [org/gnome/shell]
-enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'hotedge@jonathan.jdoda.ca', 'blur-my-shell@aunetx', 'just-perfection-desktop@just-perfection', 'burn-my-windows@schneegans.github.com']
+enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'hotedge@jonathan.jdoda.ca', 'blur-my-shell@aunetx']
