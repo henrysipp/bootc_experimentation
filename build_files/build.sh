@@ -23,6 +23,14 @@ dnf5 -y install gh --repo gh-cli
 dnf5 -y install tmux 
 dnf5 -y install code
 
+# Dependencies for erlang mise install, probably useful for others
+dnf -y install gcc gcc-c++ make autoconf automake openssl-devel ncurses-devel
+
+dnf install fedora-workstation-repositories
+dnf config-manager setopt google-chrome.enabled=1
+dnf config-manager --set-enabled google-chrome
+dnf install google-chrome-stable
+
 dnf5 -y copr enable jdxcode/mise
 dnf5 -y install mise
 dnf5 -y copr disable jdxcode/mise
