@@ -17,6 +17,7 @@ dconf update
 dnf5 -y config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
 dnf5 -y copr enable bazzite-org/bazzite
 
+dnf5 -y install podman podman-compose
 dnf5 -y install git
 dnf5 -y install gh --repo gh-cli
 dnf5 -y install tmux 
