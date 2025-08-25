@@ -32,7 +32,7 @@ dnf5 -y install gcc gcc-c++ make autoconf automake openssl-devel ncurses-devel
 # dnf5 install google-chrome-stable
 
 dnf5 config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
-dnf5 install tailscale
+dnf5 -y install tailscale
 
 
 dnf5 -y copr enable jdxcode/mise
