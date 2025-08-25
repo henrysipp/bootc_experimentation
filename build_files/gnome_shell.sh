@@ -6,7 +6,8 @@ dnf5 -y install gnome-shell-extension-appindicator \
     gnome-shell-extension-blur-my-shell \
     gnome-shell-extension-dash-to-dock \
     gnome-shell-extension-hotedge \
-    gnome-shell-extension-auto-move-windows
+    gnome-shell-extension-auto-move-windows \
+    gnome-shell-extension-paperwm
 
 # Compile schemas to ensure they're valid after GNOME shell setup
 echo "Compiling schemas after GNOME shell setup..."
