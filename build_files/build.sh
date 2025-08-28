@@ -29,7 +29,7 @@ dnf5 -y install gcc gcc-c++ make autoconf automake openssl-devel ncurses-devel
 dnf5 install fedora-workstation-repositories
 dnf5 config-manager setopt google-chrome.enabled=1
 # # dnf5 config-manager --set-enabled google-chrome
-dnf5 install google-chrome-stable
+dnf5 -y install google-chrome-stable
 
 dnf5 config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 dnf5 -y install tailscale
