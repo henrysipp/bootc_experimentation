@@ -48,6 +48,12 @@ bash /ctx/build_files/gnome_shell.sh
 # Update dconf database to include our custom settings
 dconf update
 
+
+# Fly.io flyctl
+curl -L https://fly.io/install.sh | sh && \
+mv /root/.fly/bin/flyctl /usr/local/bin/flyctl && \
+rm -rf /root/.fly
+
 # Services
 systemctl enable podman.socket
 systemctl enable tailscaled
