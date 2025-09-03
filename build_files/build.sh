@@ -50,11 +50,17 @@ dconf update
 
 
 # Fly.io flyctl
-curl -Ls https://fly.io/install.sh -o /tmp/install.sh && \
-sh /tmp/install.sh && \
-install -Dm755 /root/.fly/bin/flyctl /usr/local/bin/flyctl && \
-ln -sf /usr/local/bin/flyctl /usr/local/bin/fly && \
-rm -rf /root/.fly /tmp/install.sh
+sudo bash -c '
+set -e
+tmp=$(mktemp -d)
+arch=$(uname -m); case "$arch" in x86_64) go=amd64;; aarch64) go=arm64;; *) echo "unsupported arch: $arch"; exit 1;; esac
+curl -fsSL -o "$tmp/flyctl.tgz" "https://github.com/superfly/flyctl/releases/latest/download/flyctl_Linux_${go}.tar.gz"
+tar -xzf "$tmp/flyctl.tgz" -C "$tmp"
+install -m755 "$tmp/flyctl" /usr/local/bin/flyctl
+ln -sf /usr/local/bin/flyctl /usr/local/bin/fly
+rm -rf "$tmp"
+'
+
 
 # Services
 systemctl enable podman.socket
