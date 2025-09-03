@@ -50,11 +50,11 @@ dconf update
 
 
 # Fly.io flyctl
-RUN curl -Ls https://fly.io/install.sh -o /tmp/install.sh && \
-    sh /tmp/install.sh && \
-    install -Dm755 /root/.fly/bin/flyctl /usr/local/bin/flyctl && \
-    ln -sf /usr/local/bin/flyctl /usr/local/bin/fly && \
-    rm -rf /root/.fly /tmp/install.sh
+curl -Ls https://fly.io/install.sh -o /tmp/install.sh && \
+sh /tmp/install.sh && \
+install -Dm755 /root/.fly/bin/flyctl /usr/local/bin/flyctl && \
+ln -sf /usr/local/bin/flyctl /usr/local/bin/fly && \
+rm -rf /root/.fly /tmp/install.sh
 
 # Services
 systemctl enable podman.socket
