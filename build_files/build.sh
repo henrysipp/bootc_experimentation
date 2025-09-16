@@ -17,7 +17,9 @@ dconf update
 # COPR Repos
 dnf5 -y config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
 dnf5 -y copr enable bazzite-org/bazzite
+dnf5 -y copr enable matinlotfali/KDE-Rounded-Corners
 
+dnf5 -y install kwin-effect-roundcorners 
 dnf5 -y install podman podman-compose
 dnf5 -y install git
 dnf5 -y install gh --repo gh-cli
@@ -38,6 +40,7 @@ dnf5 -y install tailscale
 dnf5 -y copr enable jdxcode/mise
 dnf5 -y install mise
 dnf5 -y copr disable jdxcode/mise
+dnf5 -y copr disable matinlotfali/KDE-Rounded-Corners
 
 rpm --import https://downloads.1password.com/linux/keys/1password.asc
 dnf5 install -y 1password 1password-cli
