@@ -36,6 +36,7 @@ dnf5 -y install google-chrome-stable
 dnf5 config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 dnf5 -y install tailscale
 dnf5 -y install mise
+dnf5 -y install cifs-utils
 
 dnf5 -y copr disable jdxcode/mise
 
@@ -51,3 +52,7 @@ dconf update
 # Services
 systemctl enable podman.socket
 systemctl enable tailscaled
+
+# Create mount point and add SMB mount to fstab
+mkdir -p /mnt/media
+echo "//tower/media /mnt/media cifs guest,uid=1000,gid=1000,iocharset=utf8,file_mode=0777,dir_mode=0777 0 0" >> /etc/fstab
