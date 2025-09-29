@@ -54,8 +54,7 @@ systemctl enable podman.socket
 systemctl enable tailscaled
 
 # Create mount point and add SMB mount to fstab
-if [ ! -d /mnt/media ]; then
-    mkdir -p /mnt/media
-    chmod 755 /mnt/media
-fi
-echo "//tower/media /mnt/media cifs guest,uid=1000,gid=1000,iocharset=utf8,file_mode=0777,dir_mode=0777 0 0" >> /etc/fstab
+# Use a different approach - create in /var/mnt instead
+mkdir -p /var/mnt/media
+chmod 755 /var/mnt/media
+echo "//tower/media /var/mnt/media cifs guest,uid=1000,gid=1000,iocharset=utf8,file_mode=0777,dir_mode=0777 0 0" >> /etc/fstab
