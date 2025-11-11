@@ -24,6 +24,7 @@ dnf5 -y install podman podman-compose
 dnf5 -y install git
 dnf5 -y install gh --repo gh-cli
 dnf5 -y install tmux 
+dnf5 -y install firefox
 # dnf5 -y install code
 
 # Dependencies for erlang mise install, probably useful for others
