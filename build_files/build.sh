@@ -44,7 +44,8 @@ rpm --import https://downloads.1password.com/linux/keys/1password.asc
 dnf5 install -y 1password 1password-cli
 
 bash /ctx/build_files/1password.sh
-bash /ctx/build_files/gnome_shell.sh
+bash /ctx/build_files/hypr.sh
+# bash /ctx/build_files/gnome_shell.sh
 
 # Update dconf database to include our custom settings
 dconf update

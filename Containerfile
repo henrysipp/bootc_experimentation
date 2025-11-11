@@ -4,10 +4,10 @@ COPY build_files /build_files
 COPY system_files /system_files
 
 # Base Image
-FROM ghcr.io/ublue-os/silverblue-main
+# FROM ghcr.io/ublue-os/silverblue-main
 # FROM ghcr.io/ublue-os/kinoite-main
 # FROM ghcr.io/ublue-os/cosmic-atomic-main
-# FROM quay.io/fedora/fedora-bootc:42
+FROM quay.io/fedora/fedora-bootc:42
 
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
