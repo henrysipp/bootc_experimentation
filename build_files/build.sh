@@ -12,7 +12,7 @@ dnf5 -y install 'dnf5-command(config-manager)'
 dnf5 -y install dnf5-plugins
 
 # rsync system files into the container image
-# rsync -rvK /ctx/system_files/ /
+rsync -rvK /ctx/system_files/ /
 
 
 # COPR Repos
