@@ -12,7 +12,8 @@ dnf5 -y install \
   hypridle \
   waybar \
   kitty \
-  xdg-desktop-portal-hyprland
+  xdg-desktop-portal-hyprland \
+  uwsm
 
 # --- Core utilities ---
 dnf5 -y install \
