@@ -26,7 +26,7 @@ dnf5 -y install git
 dnf5 -y install gh --repo gh-cli
 dnf5 -y install tmux 
 dnf5 -y install firefox
-# dnf5 -y install code
+dnf5 -y install code
 
 # Dependencies for erlang mise install, probably useful for others
 dnf5 -y install gcc gcc-c++ make autoconf automake openssl-devel ncurses-devel

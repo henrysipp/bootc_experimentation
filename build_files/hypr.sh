@@ -82,3 +82,4 @@ dnf5 -y install \
 # --- Notifications ---
 dnf5 -y install \
   dunst
+
