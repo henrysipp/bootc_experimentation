@@ -7,7 +7,7 @@ dnf5 -y copr enable solopasha/hyprland
 # --- Base Hyprland setup ---
 dnf5 -y install \
   hyprland \
-  hyprland-qtutils \
+  hyprland-guiutils \
   hyprpaper \
   hyprlock \
   hypridle \
