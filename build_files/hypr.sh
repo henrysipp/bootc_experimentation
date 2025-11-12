@@ -7,11 +7,13 @@ dnf5 -y copr enable solopasha/hyprland
 # --- Base Hyprland setup ---
 dnf5 -y install \
   hyprland \
+  hyprland-qtutils \
   hyprpaper \
   hyprlock \
   hypridle \
   waybar \
   kitty \
+  swaybg \
   xdg-desktop-portal-hyprland \
   uwsm
 
@@ -82,5 +84,6 @@ dnf5 -y install \
 
 # --- Notifications ---
 dnf5 -y install \
-  dunst
+  mako
+#   dunst
 
