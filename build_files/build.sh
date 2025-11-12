@@ -48,10 +48,7 @@ dnf5 install -y 1password 1password-cli
 
 bash /ctx/build_files/1password.sh
 
-dnf5  -y copr enable solopasha/hyprland
 bash /ctx/build_files/hypr.sh
-# bash /ctx/build_files/gnome_shell.sh
-
 
 # Services
 systemctl enable podman.socket
