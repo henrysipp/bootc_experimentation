@@ -8,11 +8,11 @@ COPY system_files /system_files
 # FROM ghcr.io/ublue-os/kinoite-main
 # FROM ghcr.io/ublue-os/cosmic-atomic-main
 # FROM quay.io/fedora/fedora-bootc:43
-FROM quay.io/fedora-ostree-desktops/base-atomic:43
+# FROM quay.io/fedora-ostree-desktops/base-atomic:43
 
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
-# FROM ghcr.io/ublue-os/bluefin-nvidia:stable
+FROM ghcr.io/ublue-os/bluefin:stable
 # 
 # ... and so on, here are more base images
 # Universal Blue Images: https://github.com/orgs/ublue-os/packages
