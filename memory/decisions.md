@@ -239,3 +239,9 @@ Context: Desktop native clipboard paste reliability
 Type: decision
 Rule: In `pasteFromClipboard`, strengthen the primary native paste path with explicit focus/select prep and one retry before using synthetic fallback.
 Why: Increase success rate of trusted keyboard paste so synthetic event fallback is needed less often.
+
+## 2026-02-19 10:47
+Context: Base image browser tooling
+Type: decision
+Rule: Install `chromium` in `build_files/build.sh` alongside Firefox in the base image package set.
+Why: Ensure Chromium is available in built environments that require Chrome-compatible browser tooling.
