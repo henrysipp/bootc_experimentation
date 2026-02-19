@@ -251,3 +251,9 @@ Context: Silverblue image package set
 Type: decision
 Rule: Install Ghostty in `build_files/build.sh` via `dnf5 copr enable scottames/ghostty` and `dnf5 install ghostty` so it is baked into the image.
 Why: User wants Ghostty managed by the image build rather than ad hoc host installation.
+
+## 2026-02-19 11:52
+Context: GNOME desktop keybindings
+Type: preference
+Rule: Set GNOME window-close shortcut to `Super+W` via `org/gnome/desktop/wm/keybindings close=['<Super>w']` in system dconf defaults.
+Why: User preference is to use `Super+W` as the close-app/window command.
