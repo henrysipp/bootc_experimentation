@@ -21,13 +21,10 @@ dnf5 install -y 1password 1password-cli
 
 bash /ctx/build_files/1password.sh
 
-# Install Slack from Slack's first-party RPM file URL
-SLACK_RPM_URL="$(
-  curl -fsSL "https://slack.com/downloads/linux" \
-    | grep -Eo 'https://downloads\.slack-edge\.com/desktop-releases/linux/x64/[0-9.]+/slack-[0-9.]+-0\.1\.el8\.x86_64\.rpm' \
-    | head -n1
-)"
-test -n "${SLACK_RPM_URL}"
+# Install Slack by resolving Slack's first-party Linux RPM download redirect
+SLACK_RPM_URL="$(curl -fsSIL -o /dev/null -w '%{url_effective}' "https://slack.com/downloads/instructions/linux?build=rpm&ddl=1")"
+echo "Resolved Slack RPM URL: ${SLACK_RPM_URL}"
+echo "${SLACK_RPM_URL}" | grep -Eq '^https://downloads\.slack-edge\.com/.+\.rpm$'
 curl -fsSL -o /tmp/slack.rpm "${SLACK_RPM_URL}"
 dnf5 install -y /tmp/slack.rpm
 rm -f /tmp/slack.rpm
