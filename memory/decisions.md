@@ -245,3 +245,9 @@ Context: Base image browser tooling
 Type: decision
 Rule: Install `chromium` in `build_files/build.sh` alongside Firefox in the base image package set.
 Why: Ensure Chromium is available in built environments that require Chrome-compatible browser tooling.
+
+## 2026-02-19 11:46
+Context: Silverblue image package set
+Type: decision
+Rule: Install Ghostty in `build_files/build.sh` via `dnf5 copr enable scottames/ghostty` and `dnf5 install ghostty` so it is baked into the image.
+Why: User wants Ghostty managed by the image build rather than ad hoc host installation.

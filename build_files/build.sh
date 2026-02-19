@@ -10,9 +10,11 @@ dnf -y install curl tar ca-certificates && update-ca-trust
 dnf5  -y install 'dnf5-command(copr)'
 dnf5 -y install 'dnf5-command(config-manager)'
 dnf5 -y install dnf5-plugins
+dnf5 -y copr enable scottames/ghostty
 dnf5 -y install firefox
 dnf5 -y install chromium
 dnf5 -y install wtype
+dnf5 -y install ghostty
 
 # rsync system files into the container image
 rsync -rvK /ctx/system_files/ /
