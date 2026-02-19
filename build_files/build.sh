@@ -10,14 +10,27 @@ dnf -y install curl tar ca-certificates && update-ca-trust
 dnf5  -y install 'dnf5-command(copr)'
 dnf5 -y install 'dnf5-command(config-manager)'
 dnf5 -y install dnf5-plugins
+dnf5 -y install firefox
 
 # rsync system files into the container image
 rsync -rvK /ctx/system_files/ /
+dconf update
 
 rpm --import https://downloads.1password.com/linux/keys/1password.asc
 dnf5 install -y 1password 1password-cli
 
 bash /ctx/build_files/1password.sh
+
+# Install Slack from Slack's first-party RPM file URL
+SLACK_RPM_URL="$(
+  curl -fsSL "https://slack.com/downloads/linux" \
+    | grep -Eo 'https://downloads\.slack-edge\.com/desktop-releases/linux/x64/[0-9.]+/slack-[0-9.]+-0\.1\.el8\.x86_64\.rpm' \
+    | head -n1
+)"
+test -n "${SLACK_RPM_URL}"
+curl -fsSL -o /tmp/slack.rpm "${SLACK_RPM_URL}"
+dnf5 install -y /tmp/slack.rpm
+rm -f /tmp/slack.rpm
 
 # Create mount point and add SMB mount to fstab
 # Use a different approach - create in /var/mnt instead
