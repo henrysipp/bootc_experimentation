@@ -1,0 +1,2 @@
+#!/bin/bash
+exec wtype -M ctrl c -m ctrl
