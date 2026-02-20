@@ -20,9 +20,14 @@ GOOGLE_KEYS="$(rpm -qa gpg-pubkey* --qf '%{NAME}-%{VERSION}-%{RELEASE} %{PACKAGE
 if [ -n "${GOOGLE_KEYS}" ]; then
   rpm -e ${GOOGLE_KEYS}
 fi
+# Also remove historically stale Google key packages by key id if present.
+STALE_GOOGLE_KEYS="$(rpm -qa gpg-pubkey* | grep -E 'gpg-pubkey-(7fac5991|d38b4796)-' || true)"
+if [ -n "${STALE_GOOGLE_KEYS}" ]; then
+  rpm -e ${STALE_GOOGLE_KEYS}
+fi
 rpm --import /tmp/google-linux-signing-key.pub
 rm -f /tmp/google-linux-signing-key.pub
-dnf5 config-manager addrepo --from-repofile=https://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome.repo --add-or-replace
+dnf5 config-manager addrepo --from-repofile=https://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome.repo --overwrite
 dnf5 -y install google-chrome-stable
 dnf5 -y install xremap-gnome
 dnf5 -y install ghostty

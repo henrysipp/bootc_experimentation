@@ -91,3 +91,13 @@ Rule: In create-listing flow, preserve publish-transition steps before any succe
 Root cause: Interim debugging edits removed the publish transition and were not reverted.
 Fix applied: Reinserted publish sequence in `apps/desktop/src/facebook/listing/create.ts`.
 Prevention rule: For debug-only workflow changes in posting code, gate via flags/scripts and keep production publish path intact.
+
+## 2026-02-19 21:09
+Context: Fedora 43 image build Chrome repo setup
+Type: mistake
+Event: Used `dnf5 config-manager addrepo --from-repofile=... --add-or-replace`, which fails because those options are incompatible in current dnf5.
+Action: Replaced with `--overwrite` and hardened Google key cleanup to remove stale key IDs before re-import.
+Rule: For dnf5 `addrepo --from-repofile`, use `--overwrite` for idempotence and never combine with `--add-or-replace`.
+Root cause: Assumed older config-manager flag combinations were still valid in this dnf5 release.
+Fix applied: Updated `build_files/build.sh` addrepo flags and key-removal logic (`7fac5991`/`d38b4796` cleanup).
+Prevention rule: Verify exact dnf5 subcommand option compatibility with `--help` before using mixed flag patterns in build scripts.
