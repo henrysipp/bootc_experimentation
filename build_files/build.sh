@@ -12,12 +12,7 @@ dnf5 -y install 'dnf5-command(config-manager)'
 dnf5 -y install dnf5-plugins
 dnf5 -y copr enable scottames/ghostty
 dnf5 -y copr enable blakegardner/xremap
-dnf5 -y install firefox
-
-# Use Fedora's maintained third-party repo definitions for Chrome.
-dnf5 -y install fedora-workstation-repositories
-dnf5 config-manager setopt google-chrome.enabled=1
-dnf5 -y install google-chrome-stable
+dnf5 -y install firefox chromium
 dnf5 -y install xremap-gnome
 dnf5 -y install ghostty
 
