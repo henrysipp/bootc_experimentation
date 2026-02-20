@@ -14,20 +14,9 @@ dnf5 -y copr enable scottames/ghostty
 dnf5 -y copr enable blakegardner/xremap
 dnf5 -y install firefox
 
-# Refresh Google signing key to avoid rpm subkey import bug / expired subkey warnings
-curl -fsSL -o /tmp/google-linux-signing-key.pub https://dl.google.com/linux/linux_signing_key.pub
-GOOGLE_KEYS="$(rpm -qa gpg-pubkey* --qf '%{NAME}-%{VERSION}-%{RELEASE} %{PACKAGER}\n' | awk '/linux-packages-keymaster@google.com/ {print $1}')"
-if [ -n "${GOOGLE_KEYS}" ]; then
-  rpm -e ${GOOGLE_KEYS}
-fi
-# Also remove historically stale Google key packages by key id if present.
-STALE_GOOGLE_KEYS="$(rpm -qa gpg-pubkey* | grep -E 'gpg-pubkey-(7fac5991|d38b4796)-' || true)"
-if [ -n "${STALE_GOOGLE_KEYS}" ]; then
-  rpm -e ${STALE_GOOGLE_KEYS}
-fi
-rpm --import /tmp/google-linux-signing-key.pub
-rm -f /tmp/google-linux-signing-key.pub
-dnf5 config-manager addrepo --from-repofile=https://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome.repo --overwrite
+# Use Fedora's maintained third-party repo definitions for Chrome.
+dnf5 -y install fedora-workstation-repositories
+dnf5 config-manager setopt google-chrome.enabled=1
 dnf5 -y install google-chrome-stable
 dnf5 -y install xremap-gnome
 dnf5 -y install ghostty

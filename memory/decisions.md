@@ -210,6 +210,12 @@ Type: decision
 Rule: Use xremap for Super+C/V/X on GNOME and remove the wtype-based scripts/keybindings.
 Why: GNOME Wayland does not support wtype’s virtual keyboard protocol, while xremap works via uinput.
 
+## 2026-02-19 21:13
+Context: Chrome installation in Fedora 43 image build
+Type: decision
+Rule: Install Chrome via `fedora-workstation-repositories` and `dnf5 config-manager setopt google-chrome.enabled=1` instead of manually adding Google repofile URLs.
+Why: Fedora-managed third-party repo definitions are stable in dnf5 and avoid brittle direct repofile URL failures.
+
 ## 2026-02-18 20:27
 Context: Marketing site theme
 Type: preference

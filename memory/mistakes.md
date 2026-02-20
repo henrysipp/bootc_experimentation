@@ -101,3 +101,13 @@ Rule: For dnf5 `addrepo --from-repofile`, use `--overwrite` for idempotence and 
 Root cause: Assumed older config-manager flag combinations were still valid in this dnf5 release.
 Fix applied: Updated `build_files/build.sh` addrepo flags and key-removal logic (`7fac5991`/`d38b4796` cleanup).
 Prevention rule: Verify exact dnf5 subcommand option compatibility with `--help` before using mixed flag patterns in build scripts.
+
+## 2026-02-19 21:13
+Context: Fedora 43 image build Chrome repository source
+Type: mistake
+Event: Switched to direct Google repofile URL for dnf5 and hit 404 at build time.
+Action: Replaced manual Google repo setup with Fedora third-party repository flow.
+Rule: Prefer distro-maintained repository definitions over vendor repofile URLs in long-lived build scripts.
+Root cause: Assumed the direct Google `.repo` URL path was still published and stable.
+Fix applied: Updated `build_files/build.sh` to install `fedora-workstation-repositories` and enable `google-chrome` via `dnf5 config-manager setopt`.
+Prevention rule: For external repos, validate URL accessibility or use distro repository packages where available.
