@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Xremap
+Exec=/usr/bin/xremap --watch /etc/xremap/config.yml
+X-GNOME-Autostart-enabled=true

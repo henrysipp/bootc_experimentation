@@ -1,0 +1,19 @@
+keymap:
+  - name: Terminal super copy/paste
+    application:
+      only:
+        - org.gnome.Terminal
+        - org.gnome.Console
+        - kitty
+        - Alacritty
+        - org.wezfurlong.wezterm
+        - com.mitchellh.ghostty
+    remap:
+      SUPER-C: C-Shift-C
+      SUPER-V: C-Shift-V
+      SUPER-X: C-Shift-X
+  - name: Global super copy/paste
+    remap:
+      SUPER-C: C-C
+      SUPER-V: C-V
+      SUPER-X: C-X

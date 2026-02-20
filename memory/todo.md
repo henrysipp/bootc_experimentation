@@ -10,3 +10,7 @@
 - After deploying low-confidence scrape retry logic, re-trigger scraping for listings currently stuck with all-Unknown core fields (including `vnZjz8EcvwMe1SY62oi2wAQ2`) and confirm they resolve or move to failed/retry-visible state.
 - Add Windows installer code-signing/notarization equivalent for desktop CI once certificate/secrets strategy is finalized.
 - Decide whether to replace `wtype` with a GNOME Shell extension (or portal-based approach) for Super+Copy/Paste to reduce synthetic-input tooling exposure.
+
+## Closed
+
+- 2026-02-19: Replaced wtype-based Super+Copy/Paste with xremap for GNOME.

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dnf5 -y install gnome-tweaks 
-dnf5 -y install gnome-extensions-app curl wtype
+dnf5 -y install gnome-extensions-app curl
 dnf5 -y install gnome-shell-extension-appindicator \
     gnome-shell-extension-blur-my-shell \
     gnome-shell-extension-auto-move-windows

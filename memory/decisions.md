@@ -198,6 +198,18 @@ Type: preference
 Rule: Keep the tab open only if the app crashes after clicking "Publish"; close the tab if it fails during form filling.
 Why: Preserve post-publish failure state while keeping earlier form failures cleanly reset.
 
+## 2026-02-19 20:42
+Context: Build signing key warnings
+Type: preference
+Rule: Treat third-party signing key warnings (e.g., expired subkeys) as build-blocking and fix them instead of ignoring.
+Why: Signing key warnings can indicate trust issues and should be resolved explicitly.
+
+## 2026-02-19 20:48
+Context: GNOME Super copy/paste
+Type: decision
+Rule: Use xremap for Super+C/V/X on GNOME and remove the wtype-based scripts/keybindings.
+Why: GNOME Wayland does not support wtype’s virtual keyboard protocol, while xremap works via uinput.
+
 ## 2026-02-18 20:27
 Context: Marketing site theme
 Type: preference
