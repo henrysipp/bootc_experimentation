@@ -257,3 +257,9 @@ Context: GNOME desktop keybindings
 Type: preference
 Rule: Set GNOME window-close shortcut to `Super+W` via `org/gnome/desktop/wm/keybindings close=['<Super>w']` in system dconf defaults.
 Why: User preference is to use `Super+W` as the close-app/window command.
+
+## 2026-02-20 00:00
+Context: Base image browser tooling
+Type: decision
+Rule: Install Google Chrome (stable) in `build_files/build.sh` instead of Chromium.
+Why: User explicitly requested Chrome, not Chromium.

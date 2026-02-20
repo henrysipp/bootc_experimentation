@@ -12,7 +12,9 @@ dnf5 -y install 'dnf5-command(config-manager)'
 dnf5 -y install dnf5-plugins
 dnf5 -y copr enable scottames/ghostty
 dnf5 -y install firefox
-dnf5 -y install chromium
+rpm --import https://dl.google.com/linux/linux_signing_key.pub
+dnf5 config-manager --add-repo https://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome.repo
+dnf5 -y install google-chrome-stable
 dnf5 -y install wtype
 dnf5 -y install ghostty
 
