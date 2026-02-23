@@ -38,6 +38,17 @@ curl -fsSL -o /tmp/slack.rpm "${SLACK_RPM_URL}"
 dnf5 install -y /tmp/slack.rpm
 rm -f /tmp/slack.rpm
 
+# Install JetBrains Toolbox from official Linux endpoint
+JETBRAINS_TOOLBOX_URL="https://data.services.jetbrains.com/products/download?platform=linux&code=TBA"
+curl -fL "${JETBRAINS_TOOLBOX_URL}" -o /tmp/jetbrains-toolbox.tar.gz
+mkdir -p /opt/jetbrains-toolbox
+tar -xzf /tmp/jetbrains-toolbox.tar.gz -C /tmp
+TOOLBOX_DIR="$(find /tmp -maxdepth 1 -type d -name 'jetbrains-toolbox-*' | head -n1)"
+test -n "${TOOLBOX_DIR}"
+install -m 0755 "${TOOLBOX_DIR}/jetbrains-toolbox" /opt/jetbrains-toolbox/jetbrains-toolbox
+ln -sf /opt/jetbrains-toolbox/jetbrains-toolbox /usr/local/bin/jetbrains-toolbox
+rm -rf /tmp/jetbrains-toolbox.tar.gz "${TOOLBOX_DIR}"
+
 # Create mount point and add SMB mount to fstab
 # Use a different approach - create in /var/mnt instead
 # mkdir -p /var/mnt/media

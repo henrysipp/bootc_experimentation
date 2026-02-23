@@ -275,3 +275,9 @@ Context: Base image browser tooling
 Type: decision
 Rule: Install `chromium` in `build_files/build.sh` (with Firefox) instead of Google Chrome.
 Why: User reverted browser preference back to Chromium because Chrome was not appearing as expected.
+
+## 2026-02-23 08:37
+Context: Base image IDE tooling
+Type: decision
+Rule: Install JetBrains Toolbox in `build_files/build.sh` using JetBrains' official Linux download endpoint and expose it as `/usr/local/bin/jetbrains-toolbox`.
+Why: User wants Toolbox included directly in the built image.
