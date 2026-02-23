@@ -121,3 +121,13 @@ Rule: For downloaded archive installs, avoid hardcoding internal file paths unle
 Root cause: Implementation used a fixed internal path derived from one assumed archive structure.
 Fix applied: Updated `build_files/build.sh` to set `TOOLBOX_BIN` via `find "${TOOLBOX_DIR}" -type f -name 'jetbrains-toolbox' | head -n1` and install from that path.
 Prevention rule: Treat third-party tarball internals as variable and resolve executable paths dynamically with explicit non-empty checks.
+
+## 2026-02-23 08:48
+Context: Base image JetBrains Toolbox symlink path
+Type: mistake
+Event: Created a symlink in `/usr/local/bin` without ensuring the directory exists, causing the build to fail on this base image.
+Action: Added `mkdir -p /usr/local/bin` before creating the symlink.
+Rule: Before linking binaries into optional prefix paths, create parent directories explicitly.
+Root cause: Assumed `/usr/local/bin` was always present in the target image.
+Fix applied: Updated `build_files/build.sh` to create `/usr/local/bin` before `ln -sf`.
+Prevention rule: For filesystem paths outside package-managed defaults, always ensure directory existence in build scripts.
