@@ -131,3 +131,13 @@ Rule: Before linking binaries into optional prefix paths, create parent director
 Root cause: Assumed `/usr/local/bin` was always present in the target image.
 Fix applied: Updated `build_files/build.sh` to create `/usr/local/bin` before `ln -sf`.
 Prevention rule: For filesystem paths outside package-managed defaults, always ensure directory existence in build scripts.
+
+## 2026-02-23 08:59
+Context: Base image JetBrains Toolbox PATH location
+Type: mistake
+Event: Retained `/usr/local/bin` symlink strategy even after encountering base-image path incompatibilities (`/usr/local` not usable as a normal directory path in this build context).
+Action: Removed `/usr/local/bin` symlink logic and installed launcher binary directly to `/usr/bin/jetbrains-toolbox`.
+Rule: On ostree/bootc-style base images, prefer direct installation into guaranteed system PATH directories over `/usr/local` assumptions.
+Root cause: Assumed `/usr/local` semantics matched mutable traditional distro layouts.
+Fix applied: Updated `build_files/build.sh` to install Toolbox binary directly into `/usr/bin`.
+Prevention rule: For image builds, choose target paths already present in the base image (`/usr/bin`) unless `/usr/local` behavior is explicitly verified.

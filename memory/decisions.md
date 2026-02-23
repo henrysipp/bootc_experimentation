@@ -279,5 +279,5 @@ Why: User reverted browser preference back to Chromium because Chrome was not ap
 ## 2026-02-23 08:37
 Context: Base image IDE tooling
 Type: decision
-Rule: Install JetBrains Toolbox in `build_files/build.sh` using JetBrains' official Linux download endpoint and expose it as `/usr/local/bin/jetbrains-toolbox`.
+Rule: Install JetBrains Toolbox in `build_files/build.sh` using JetBrains' official Linux download endpoint and expose it as `/usr/bin/jetbrains-toolbox`.
 Why: User wants Toolbox included directly in the built image.

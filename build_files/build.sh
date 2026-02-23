@@ -48,8 +48,7 @@ test -n "${TOOLBOX_DIR}"
 TOOLBOX_BIN="$(find "${TOOLBOX_DIR}" -type f -name 'jetbrains-toolbox' | head -n1)"
 test -n "${TOOLBOX_BIN}"
 install -m 0755 "${TOOLBOX_BIN}" /opt/jetbrains-toolbox/jetbrains-toolbox
-mkdir -p /usr/local/bin
-ln -sf /opt/jetbrains-toolbox/jetbrains-toolbox /usr/local/bin/jetbrains-toolbox
+install -m 0755 /opt/jetbrains-toolbox/jetbrains-toolbox /usr/bin/jetbrains-toolbox
 rm -rf /tmp/jetbrains-toolbox.tar.gz "${TOOLBOX_DIR}"
 
 # Create mount point and add SMB mount to fstab
