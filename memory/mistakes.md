@@ -111,3 +111,13 @@ Rule: Prefer distro-maintained repository definitions over vendor repofile URLs 
 Root cause: Assumed the direct Google `.repo` URL path was still published and stable.
 Fix applied: Updated `build_files/build.sh` to install `fedora-workstation-repositories` and enable `google-chrome` via `dnf5 config-manager setopt`.
 Prevention rule: For external repos, validate URL accessibility or use distro repository packages where available.
+
+## 2026-02-23 08:44
+Context: Base image JetBrains Toolbox install path
+Type: mistake
+Event: Assumed the extracted toolbox binary path was `${TOOLBOX_DIR}/jetbrains-toolbox`, causing build failure when archive layout changed.
+Action: Switched install logic to discover the `jetbrains-toolbox` binary recursively inside the extracted directory before install.
+Rule: For downloaded archive installs, avoid hardcoding internal file paths unless archive layout is guaranteed stable.
+Root cause: Implementation used a fixed internal path derived from one assumed archive structure.
+Fix applied: Updated `build_files/build.sh` to set `TOOLBOX_BIN` via `find "${TOOLBOX_DIR}" -type f -name 'jetbrains-toolbox' | head -n1` and install from that path.
+Prevention rule: Treat third-party tarball internals as variable and resolve executable paths dynamically with explicit non-empty checks.

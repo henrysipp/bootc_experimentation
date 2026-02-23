@@ -45,7 +45,9 @@ mkdir -p /opt/jetbrains-toolbox
 tar -xzf /tmp/jetbrains-toolbox.tar.gz -C /tmp
 TOOLBOX_DIR="$(find /tmp -maxdepth 1 -type d -name 'jetbrains-toolbox-*' | head -n1)"
 test -n "${TOOLBOX_DIR}"
-install -m 0755 "${TOOLBOX_DIR}/jetbrains-toolbox" /opt/jetbrains-toolbox/jetbrains-toolbox
+TOOLBOX_BIN="$(find "${TOOLBOX_DIR}" -type f -name 'jetbrains-toolbox' | head -n1)"
+test -n "${TOOLBOX_BIN}"
+install -m 0755 "${TOOLBOX_BIN}" /opt/jetbrains-toolbox/jetbrains-toolbox
 ln -sf /opt/jetbrains-toolbox/jetbrains-toolbox /usr/local/bin/jetbrains-toolbox
 rm -rf /tmp/jetbrains-toolbox.tar.gz "${TOOLBOX_DIR}"
 
